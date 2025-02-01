@@ -3,21 +3,7 @@ import { Header } from './components/Header';
 import { Navigation } from './components/Navigation';
 import { ModuleCard } from './components/ModuleCard';
 import { SemesterTabs } from './components/SemesterTabs';
-import { filieres, type Module } from './types';
-
-// Sample modules data - replace with actual data
-const sampleModules: Module[] = [
-  {
-    id: '1',
-    name: 'Introduction to Programming',
-    code: 'GEIN101',
-    filiereId: 'gein',
-    semester: 1,
-    youtubeUrl: 'https://youtube.com/playlist?list=example',
-    driveUrl: 'https://drive.google.com/drive/folders/example',
-  },
-  // Add more modules as needed
-];
+import { filieres, modules } from './types';
 
 function App() {
   const [selectedFiliere, setSelectedFiliere] = useState(filieres[0].id);
@@ -26,7 +12,7 @@ function App() {
 
   const currentFiliere = filieres.find((f) => f.id === selectedFiliere)!;
 
-  const filteredModules = sampleModules.filter((module) => {
+  const filteredModules = modules.filter((module) => {
     const matchesSearch = module.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          module.code.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesFiliere = module.filiereId === selectedFiliere;
